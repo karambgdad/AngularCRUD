@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-sm-10 ">
+        <h3> <i class="fa fa-plus"></i> Edit Employee</h3>
+    </div>
+
+    <div class="col-sm-2 ">
+        <a href="#" class=" btn btn-primary" [routerLink]="['/employees/'+id]"> Go Back <i
+                class="fa fa-arrow-circle-left"></i></a>
+    </div>
+</div>
+
+<form novalidate #fo="ngForm" (ngSubmit)="mySubmit(fo)">
+    <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" class="form-control" name="firstName"
+        [(ngModel)]="employee.firstName"
+        #employeefirstName="ngModel"
+        required
+        minlength="4">
+        <div *ngIf="employeefirstName.errors?.['required'] && employeefirstName.touched" class ="alert alert-danger">First Name is required</div>
+        <div *ngIf="employeefirstName.errors?.['minlength'] && employeefirstName.touched" class ="alert alert-danger">need at least 4 chars</div>
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" class="form-control" name="lastName"
+        [(ngModel)]="employee.lastName"
+        #employeelastName="ngModel"
+        required
+        minlength="4">
+        <div *ngIf="employeelastName.errors?.['required']  && employeelastName.touched" class ="alert alert-danger">Last Name is required</div>
+        <div *ngIf="employeelastName.errors?.['minlength'] && employeelastName.touched" class ="alert alert-danger">need at least 4 chars</div>
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" name="email"
+        [(ngModel)]="employee.email"
+        #employeeemail = "ngModel"
+        required
+        minlength="4">
+        <div *ngIf="employeeemail.errors?.['required'] && employeeemail.touched" class ="alert alert-danger">Email is required</div>
+    </div>
+
+    <div class="form-group">
+        <label for="country">Country:</label>
+        <input type="text" class="form-control" name="country"
+        [(ngModel)]="employee.country">
+    </div>
+
+    <div class="form-group">
+        <label for="city">City:</label>
+        <input type="text" class="form-control" name="city"
+        [(ngModel)]="employee.city">
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="text" class="form-control" name="phone"
+        [(ngModel)]="employee.phone">
+    </div>
+
+    <div class="form-group">
+        <label for="salary">Salary:</label>
+        <input type="text" class="form-control" name="salary"
+        [(ngModel)]="employee.salary">
+
+        <!-- [disabled]="disableSalary" -->
+    </div>
+
+    <!-- <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div> -->
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>

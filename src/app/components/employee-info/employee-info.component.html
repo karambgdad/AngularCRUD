@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-sm-10 ">
+        <h3> <i class="fa fa-info"></i> employee-info works!</h3>
+    </div>
+
+    <div class="col-sm-2 ">
+        <a href="#" class=" btn btn-primary" routerLink="/employees"> Go Back <i
+                class="fa fa-info-circle"></i></a>
+    </div>
+</div>
+
+
+<div *ngIf=" employee ; else elseBlock">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">FirstName</th>
+                <th scope="col">LastName</th>
+                <th scope="col">salary</th>
+                <th scope="col">Delete the employee</th>
+                <th scope="col">Edit the info of Employee</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{employee.firstName}}</td>
+                <td>{{employee.lastName}}</td>
+                <td>{{employee.salary}}</td>
+                <td>
+                    <button (click)="myDelete(id)" class=" btn btn-danger"> Delete <i class="fa fa-info-circle"></i></button>
+                    <div *ngIf="deleteMessage" class="alert alert-success mt-2">{{ deleteMessage }}</div>
+                </td>
+                <td><a (click)="navigateEditPage()" class=" btn btn-primary"> Edit <i class="fa fa-info-circle"></i></a></td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>
+<ng-template #elseBlock>no Employee found in the Database</ng-template>
+
+<div class="container">
+    <h3 
+    [class.text-danger]="hasSalary"
+    [class.text-primary] = "!hasSalary">
+Salary: {{employee.salary | currency:"USD":true}}
+<a (click)="updateSalaryInput=!updateSalaryInput"><i class="fa fa-pencil-square-o"></i></a>
+    </h3>
+<form *ngIf="updateSalaryInput" (submit) =updateSalary(id)>
+
+    <div class="form-group">
+        <input type="text" class="form-control" name="salary" [(ngModel)] = "employee.salary">
+
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <div *ngIf="successMessage">{{ successMessage }}</div>
+</form>
+</div>

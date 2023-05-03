@@ -25,9 +25,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "../EmployeesDB/node_modules/bootstrap/dist/css/bootstrap.css",
+              "../EmployeesDB/node_modules/font-awesome/css/font-awesome.min.css"
+
             ],
-            "scripts": []
+            "scripts": [
+              "../EmployeesDB/node_modules/jquery/dist/jquery.js",
+              "../EmployeesDB/node_modules/tether/dist/js/tether.js",
+              "../EmployeesDB/node_modules/bootstrap/dist/js/bootstrap.js"
+
+            ]
           },
           "configurations": {
             "production": {
@@ -94,5 +102,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "5758f58d-52a8-4fbc-b8b8-5be0b21e38d7"
   }
 }
